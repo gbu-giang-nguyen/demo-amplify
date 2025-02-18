@@ -1,12 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Aaa from '../components/aaa.astro';
+import Hello from '../components/Hello.vue';
 ---
 
 <Layout>
-	<Aaa server:defer>
-		<div slot="fallback">
-			Loading...
-		</div>
-	</Aaa>
+	<Hello client:load/>
 </Layout>
