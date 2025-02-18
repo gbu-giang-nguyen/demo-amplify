@@ -1,0 +1,17 @@
+---
+let data: Record<string, any>[] = await new Promise((resolve, reject) => {
+    fetch('https://fake-json-api.mock.beeceptor.com/users')
+        .then((res) => res.json())
+        .then((d) => {
+            resolve(d);
+        })
+});
+
+await new Promise((resolve, reject) => {
+    setTimeout(resolve, 3000);
+})
+---
+
+<div>
+    {data.map(item => <p>{item.name}</p>)}
+</div>

@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Aaa from '../components/aaa.astro';
+---
+
+<Layout>
+	<Aaa server:defer>
+		<div slot="fallback">
+			Loading...
+		</div>
+	</Aaa>
+</Layout>
