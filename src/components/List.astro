@@ -1,0 +1,19 @@
+---
+
+let data:any  = await new Promise((resolve, reject) => {
+    fetch('https://test-giangnn.microcms.io/api/v1/news', {
+        headers: {
+            'X-MICROCMS-API-KEY': '87bTidxPI6zUfgFk5gEKsUGUNdRq81SjewSP'
+        }
+    })
+        .then((res) => res.json())
+        .then((d) => {
+            resolve(d);
+        })
+});
+
+---
+
+<div>
+    {data.contents.map((item:any) => <p>{item.title}</p>)}
+</div>
