@@ -1,9 +1,10 @@
 ---
+import { preprocess } from "astro/zod";
 import ListItem from "./ListItem.astro";
 let data:any  = await new Promise((resolve, reject) => {
-    fetch('https://test-giangnn.microcms.io/api/v1/news', {
+    fetch(import.meta.env.MICROCMS_API_ENDPOINT, {
         headers: {
-            'X-MICROCMS-API-KEY': '87bTidxPI6zUfgFk5gEKsUGUNdRq81SjewSP'
+            'X-MICROCMS-API-KEY': import.meta.env.MICROCMS_API_KEY,
         }
     })
         .then((res) => res.json())
