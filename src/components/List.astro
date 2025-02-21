@@ -1,17 +1,15 @@
 ---
 import ListItem from "./ListItem.astro";
-let data:any  = await new Promise((resolve, reject) => {
-    fetch(import.meta.env.MICROCMS_API_ENDPOINT, {
-        headers: {
-            'X-MICROCMS-API-KEY': import.meta.env.MICROCMS_API_KEY,
-        }
-    })
-        .then((res) => res.json())
-        .then((d) => {
-            resolve(d);
-        })
+
+import { createClient } from 'microcms-js-sdk';
+
+const client = createClient({
+    serviceDomain: import.meta.env.MICROCMS_SERVICE_ID,
+    apiKey: import.meta.env.MICROCMS_API_KEY,
+    retry: true
 });
 
+const data = await client.getList({endpoint: 'news'})
 ---
 
 <h3>Get list from microCMS</h3>
